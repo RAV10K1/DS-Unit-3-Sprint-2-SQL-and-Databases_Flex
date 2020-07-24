@@ -14,7 +14,7 @@ print("CONNECTION:", connection)
 cursor = connection.cursor()
 print("CURSOR", cursor)
 
-df.to_sql(name='review', con=connection)
+df.to_sql(name='review', con=connection, if_exists='replace')
 
 no_rows = 'SELECT COUNT(*) FROM review'
 result_rows = cursor.execute(no_rows).fetchall()
