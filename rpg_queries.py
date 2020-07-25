@@ -14,8 +14,8 @@ total_items = "SELECT (select COUNT(item_id) FROM armory_item) + (select COUNT(i
 item_count = "SELECT COUNT() FROM armory_weapon"
 char_item = 'SELECT character_id, count(item_id) FROM charactercreator_character_inventory GROUP BY character_id LIMIT 20'
 char_wpn = 'SELECT character_id, count(item_id) FROM charactercreator_character_inventory LEFT JOIN armory_weapon ON item_id = item_ptr_id GROUP BY character_id LIMIT 20'
-avg_char_wpn = "SELECT character_id, COUNT(item_id) as 'No_of_Items',ROUND(AVG(item_id)) FROM charactercreator_character_inventory GROUP BY character_id ORDER BY character_id LIMIT 20"
-avg_char_item = "SELECT character_id, count(item_id), round(avg(item_ptr_id)) FROM charactercreator_character_inventory LEFT JOIN armory_weapon ON item_id = item_ptr_id GROUP BY character_id LIMIT 20"
+avg_char_item = "SELECT character_id, COUNT(item_id) as 'No_of_Items',ROUND(AVG(item_id)) FROM charactercreator_character_inventory GROUP BY character_id ORDER BY character_id LIMIT 20"
+avg_char_wpn = "SELECT character_id, count(item_id), round(avg(item_ptr_id)) FROM charactercreator_character_inventory LEFT JOIN armory_weapon ON item_id = item_ptr_id GROUP BY character_id LIMIT 20"
 
 
 queries = [total_char, no_clerics, no_fighters, no_mages, no_necro, no_thief,
@@ -23,7 +23,7 @@ queries = [total_char, no_clerics, no_fighters, no_mages, no_necro, no_thief,
 
 for query in queries:
     result = cursor.execute(query).fetchall()
-    print('Answer :', result[0])
+    print('Answer :', result)
 
 
 
